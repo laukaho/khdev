@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools >= 61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "khdev"
+version = "0.1.0"
+description = "A project with multiple packages"
+authors = [{name = "Ka Ho, LAU", email = "kaholau.dev@gmail.com"}]
+dependencies = [
+
+]
+
+[project.urls]
+Homepage = "https://kaholau.com"
+
+[tool.setuptools.packages.find]
+include = ["khdev", "khdev.*"]
+namespaces = true
+
+[project.entry-points.console_scripts]
+khcli = "khdev.cli:main"
