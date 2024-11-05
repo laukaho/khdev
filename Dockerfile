@@ -1,23 +1,21 @@
-# Use the official Python image as the base
 FROM continuumio/miniconda3
 
-# Set the working directory
 WORKDIR /app
+COPY . .
 
-# Copy the environment.yml file into the container
-COPY environment.yml .
-
-# Install dependencies and create the environment from the environment.yml file
 RUN conda env create -f environment.yml
 
 # Activate the environment by default when running a container
-RUN echo "conda activate data-env" >> ~/.bashrc
+RUN echo "conda activate khdev" >> ~/.bashrc
 
-# Ensure conda environment is activated and python is linked to the environment
-SHELL ["conda", "run", "-n", "data-env", "/bin/bash", "-c"]
+SHELL ["conda", "run", "-n", "khdev", "/bin/bash", "-c"]
+RUN pip install .
 
-# Copy the application code (if any) into the container
-COPY . .
+RUN pip install jupyter \
+    && pip install notebook
+RUN mkdir -p /opt/notebooks
+EXPOSE 8080
 
-# Specify the default command to activate the environment and run a script (e.g., main.py)
-CMD ["conda", "run", "-n", "data-env", "python", "main.py"]
+# Run Jupyter Notebook with the specified options
+# CMD ["jupyter", "notebook", "--NotebookApp.token=''", "--notebook-dir=/opt/notebooks", "--ip=*", "--port=8080", "--no-browser", "--allow-root"]
+CMD ["bash", "-c", "source activate khdev && jupyter notebook --NotebookApp.token='' --notebook-dir=/opt/notebooks --ip=* --port=8080 --no-browser --allow-root"]

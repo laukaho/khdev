@@ -8,7 +8,13 @@ version = "0.1.0"
 description = "A project with multiple packages"
 authors = [{name = "Ka Ho, LAU", email = "kaholau.dev@gmail.com"}]
 dependencies = [
-
+  "numpy",
+  "pandas",
+  "scikit-learn",
+  "xgboost",
+  "catboost",
+  "lightgbm",
+  "optuna"
 ]
 
 [project.urls]

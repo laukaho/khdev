@@ -1,0 +1,13 @@
+services:
+  khdev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: khdev
+    volumes:
+      - ./:/app
+    container_name: khdev
+    platform: linux/amd64
+    ports:
+      - "8080:8080"
+      - "3000:3000"
