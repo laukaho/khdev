@@ -1,10 +1,22 @@
 name: khdev
 channels:
+  - pytorch
+  - nvidia
   - conda-forge
 dependencies:
-  - python=3.10
+  - python=3.10.14
   - jupyter
   - notebook
   - pip
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=12.4
+  - matplotlib
+  - numpy
+  - pandas
+  - scikit-learn
+  - scipy
+  - seaborn
   - pip:
       - datetime
