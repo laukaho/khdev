@@ -11,3 +11,9 @@
 ```
     docker exec -it khdev /bin/bash
 ```
+
+## Mount local data folder
+
+1. Create `.env`
+2. Add `LOCAL_DATA_PATH=<absolute-path-to-data-folder>`
+3. `docker compose down & docker compose up -d`

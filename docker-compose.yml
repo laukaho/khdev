@@ -6,6 +6,7 @@ services:
     image: khdev
     volumes:
       - ./:/app
+      - ${LOCAL_DATA_PATH}:/app/data
     container_name: khdev
     platform: linux/amd64
     ports:
